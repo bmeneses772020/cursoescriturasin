@@ -1,0 +1,62 @@
+# Expresión Escrita y Comprensión Lectora
+
+Curso de autogestión del aprendizaje sobre expresión escrita y comprensión lectora, construido con React + Vite — misma plantilla que Ficha APA (APA 7).
+
+Incluye 6 módulos, 30 lecciones (texto, video y cuestionarios), listas de chequeo, página de ventas con QR/transferencia, y candado de código de acceso.
+
+## Antes de publicar: revisa estos datos
+
+En `src/Landing.jsx`, el bloque `CONFIG` ya trae tus datos reales (mismo WhatsApp, correo y cuenta de Banco Ganadero que usas en APA 7). Revísalo de todas formas antes de publicar, por si algo cambió.
+
+## Código de acceso
+
+En `src/Gate.jsx`, el código configurado por defecto es:
+
+```
+ESCRITURA-AGOSTO2026
+```
+
+Puedes cambiarlo o agregar más códigos editando la lista `VALID_CODES`, igual que en el proyecto de APA 7.
+
+## Requisitos
+
+- [Node.js](https://nodejs.org) versión 18 o superior.
+
+## Cómo correrlo en tu computadora
+
+```
+npm install
+npm run dev
+```
+
+## Cómo publicarlo en internet (gratis)
+
+1. Sube esta carpeta a un repositorio de GitHub **nuevo** (no lo mezcles con el repositorio de APA 7). Por ejemplo, `expresion-escrita`.
+2. Entra a [vercel.com](https://vercel.com), inicia sesión con GitHub, "Add New Project" → importa este repositorio nuevo.
+3. Deja la configuración automática y haz clic en "Deploy".
+4. Obtendrás un enlace propio, por ejemplo `expresion-escrita.vercel.app`.
+5. Copia ese enlace y pídele a Claude que actualice la tarjeta de este curso en tu vitrina **Ficha Cursos** (moverla de "Próximamente" a "Disponible").
+
+## Actividades prácticas
+
+Las 6 actividades prácticas del curso ya están completas — una por módulo, cada una completable en línea (con guardado automático) y descargable como PDF desde `public/actividad-practica-modulo1.pdf` a `public/actividad-practica-modulo6.pdf`.
+
+El ejercicio de tipo `"source-compare"` ahora admite mostrar solo un texto fuente sin necesidad de una "versión del estudiante" para comparar (útil para ejercicios de comprensión lectora y resumen) — simplemente omite la propiedad `studentVersion` en la definición del ejercicio.
+
+### Retroalimentación: cómo sabe el estudiante si acertó
+
+Cada ejercicio de `"choice-items"` puede llevar, en cada ítem, una propiedad `correct` (el índice de la opción correcta, empezando en 0) y una `explanation` (el porqué). Cuando ambas están presentes, aparece un botón **"Revisar mis respuestas"** que resalta en verde la opción correcta y en rojo la que el estudiante marcó si se equivocó, mostrando la explicación debajo. El botón "Intentar de nuevo" reinicia el ejercicio.
+
+Cada pregunta dentro de `"prompts"` o `"source-compare"` puede llevar una propiedad `sample` (una respuesta modelo). Cuando está presente, aparece un botón **"Ver respuesta modelo"** individual debajo de esa pregunta, para que el estudiante compare su propia redacción — sin marcarla como correcta o incorrecta, porque este tipo de ejercicio no tiene una única respuesta válida.
+
+Si agregas una actividad práctica nueva, procura incluir `correct`/`explanation` en los ejercicios de elección y `sample` en las preguntas abiertas — de lo contrario, esos ejercicios se mostrarán sin retroalimentación.
+
+## Próximos pasos posibles
+
+## Autora
+
+Msc. Betty Meneses Ayllón
+
+## Modo Educación Continua (sin cobro)
+
+Este curso también puede usarse dentro de la página **Cursos Educación Continua** (https://cursoseducacioncontinua.vercel.app/). Cuando el participante entra desde esa página (dirección terminada en `?ec=1`), no ve el precio ni el pago: solo la pantalla de código de acceso. El código para los talleres es `EDUCON-REDACCION` (se cambia en `src/Gate.jsx`, lista `VALID_CODES`). Al completar el 100 % de las lecciones, aparece el botón «Volver y desbloquear el siguiente». La dirección de la página de Educación Continua se configura en `HUB_URL` de `src/ec.js`.
